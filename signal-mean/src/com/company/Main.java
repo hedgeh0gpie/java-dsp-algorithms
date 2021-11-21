@@ -2,8 +2,18 @@ package com.company;
 
 public class Main {
 
+
+    static double mean = 0.0;
+    private static final int SIG_LENGTH = 320;
+
     public static void main(String[] args) {
-	// write your code here
+	Signals inputSignal = new Signals();
+
+	// Two ways to do this. Pass in SIG_LENGTH or pass in the length of the array
+//	calcSignalMean(inputSignal.InputSignal_f32_1kHz_15kHz, inputSignal.InputSignal_f32_1kHz_15kHz.length);
+	mean = calcSignalMean(inputSignal.InputSignal_f32_1kHz_15kHz, SIG_LENGTH);
+        System.out.println("Mean : ");
+        System.out.println(mean);
     }
 
     // Version focused on code readability
