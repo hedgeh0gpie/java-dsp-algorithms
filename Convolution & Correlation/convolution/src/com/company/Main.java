@@ -19,5 +19,11 @@ public class Main {
             sigDestArr[i] = 0;
         }
 
+        for (i = 0; i < sigSrcLength; i++) {
+            for (j = 0; j < impResponseLength; j++) {
+                sigDestArr[i + j] = sigDestArr[i + j] + sigSrcArr[i] * impResponseArr[j];
+            }
+        }
+
     }
 }
