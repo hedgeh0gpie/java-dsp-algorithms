@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -24,6 +26,17 @@ public class Main {
                 sigDestArr[i + j] = sigDestArr[i + j] + sigSrcArr[i] * impResponseArr[j];
             }
         }
-
     }
+
+    public static void write(String filename, double[] x) throws IOException {
+
+        BufferedWriter outputWriter = null;
+        outputWriter = new BufferedWriter(new FileWriter(filename));
+
+        for (int i = 0; i < x.length; i++) {
+            outputWriter.write(Double.toString(x[i]));
+            outputWriter.newLine();
+        }
+    }
+
 }
