@@ -5,6 +5,22 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
+        Signals inputSignals = new Signals();
+        double[] outputSignal = new double[inputSignals.InputSignal_f32_1kHz_15kHz.length + inputSignals.Impulse_response.length];
+
+        convolution(inputSignals.InputSignal_f32_1kHz_15kHz,
+                    outputSignal,
+                    inputSignals.Impulse_response,
+                    inputSignals.InputSignal_f32_1kHz_15kHz.length,
+                    inputSignals.Impulse_response.length);
+
+        try {
+            write("output_signal.dat", outputSignal);
+            write("input_signal.dat", inputSignals.InputSignal_f32_1kHz_15kHz);
+            write("impulse_rsp.dat", inputSignals.Impulse_response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -37,6 +53,8 @@ public class Main {
             outputWriter.write(Double.toString(x[i]));
             outputWriter.newLine();
         }
+        outputWriter.flush();
+        outputWriter.close();
     }
 
 }
